@@ -146,7 +146,7 @@ New_vaccinations numeric,
 RollingPeopleVaccinated numeric
 )
 
-Insert into PercentPopulationVaccinated
+Insert into #PercentPopulationVaccinated
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
 , SUM(vac.new_vaccinations) OVER (Partition by dea.location Order by dea.location, dea.date) as RollingPeopleVaccinated
 --, (RollingPeopleVaccinated/population)*100
